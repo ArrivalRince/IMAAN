@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ImaanApp(navController: NavHostController = rememberNavController()) {
-    // ✅ ViewModel hanya dibuat sekali di sini dan dibagikan ke semua screen
+    // ViewModel hanya dibuat sekali di sini dan dibagikan ke semua screen
     val viewModel = remember { InventoryViewModel() }
 
     NavHost(navController, startDestination = "inventory") {

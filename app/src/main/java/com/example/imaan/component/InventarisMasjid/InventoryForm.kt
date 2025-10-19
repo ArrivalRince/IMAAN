@@ -6,9 +6,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.imaan.ui.theme.*
-
 @Composable
 fun InventoryForm(
     name: String,
@@ -18,55 +18,54 @@ fun InventoryForm(
     onNameChange: (String) -> Unit,
     onQuantityChange: (String) -> Unit,
     onConditionChange: (String) -> Unit,
-    onLocationChange: (String) -> Unit
+    onLocationChange: (String) -> Unit,
 ) {
     val fieldColors = OutlinedTextFieldDefaults.colors(
-        focusedBorderColor = BluePrimary,
-        focusedLabelColor = TextPrimary,
-        unfocusedLabelColor = TextPrimary,
+        focusedBorderColor = FocusBlue,
+        focusedLabelColor = FocusBlue,
         unfocusedBorderColor = BorderBlue,
-        unfocusedContainerColor = Color.White,
-        focusedContainerColor = Color.White
+        cursorColor = FocusBlue,
+        focusedContainerColor = CardBackground,
+        unfocusedContainerColor = CardBackground
     )
 
-    Column(
+    OutlinedTextField(
+        value = name,
+        onValueChange = onNameChange,
+        label = { Text("Nama Barang", color = TextLabel) },
+        textStyle = TextStyle(color = TextContent),
         modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(14.dp)
-    ) {
-        OutlinedTextField(
-            value = name,
-            onValueChange = onNameChange,
-            label = { Text("Nama Barang") },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp),
-            colors = fieldColors
-        )
+        shape = RoundedCornerShape(12.dp),
+        colors = fieldColors
+    )
 
-        OutlinedTextField(
-            value = quantity,
-            onValueChange = onQuantityChange,
-            label = { Text("Jumlah") },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp),
-            colors = fieldColors
-        )
+    OutlinedTextField(
+        value = quantity,
+        onValueChange = onQuantityChange,
+        label = { Text("Jumlah", color = TextLabel) },
+        textStyle = TextStyle(color = TextContent),
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = fieldColors
+    )
 
-        OutlinedTextField(
-            value = condition,
-            onValueChange = onConditionChange,
-            label = { Text("Kondisi") },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp),
-            colors = fieldColors
-        )
+    OutlinedTextField(
+        value = condition,
+        onValueChange = onConditionChange,
+        label = { Text("Kondisi", color = TextLabel) },
+        textStyle = TextStyle(color = TextContent),
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = fieldColors
+    )
 
-        OutlinedTextField(
-            value = location,
-            onValueChange = onLocationChange,
-            label = { Text("Lokasi") },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp),
-            colors = fieldColors
-        )
-    }
+    OutlinedTextField(
+        value = location,
+        onValueChange = onLocationChange,
+        label = { Text("Lokasi", color = TextLabel) },
+        textStyle = TextStyle(color = TextContent),
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = fieldColors
+    )
 }

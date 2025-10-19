@@ -13,60 +13,21 @@ import com.example.imaan.ui.theme.*
 import java.util.UUID
 
 @Composable
-fun InventoryItemCard(
-    name: String,
-    quantity: Int,
-    condition: String,
-    location: String
-) {
+fun InventoryCard(content: @Composable ColumnScope.() -> Unit) {
     Card(
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = CardBackground),
-        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+        modifier = Modifier
+            .fillMaxWidth(0.95f)
+            .wrapContentHeight(),
+        shape = RoundedCornerShape(24.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+        colors = CardDefaults.cardColors(containerColor = CardBackground)
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = name, fontWeight = FontWeight.Bold, color = TextPrimary)
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(text = "Jumlah: $quantity", color = TextMuted)
-            Text(text = "Kondisi: $condition", color = TextMuted)
-            Text(text = "Lokasi: $location", color = TextMuted)
-        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            content = content
+        )
     }
-}
-
-data class Inventory(
-    val id: String = UUID.randomUUID().toString(),
-    val name: String,
-    val quantity: Int,
-    val condition: String,
-    val location: String
-)
-
-class InventoryViewModel : ViewModel() {
-
-    var inventoryList = mutableStateListOf(
-        Inventory(
-            name = "Karpet Masjid",
-            quantity = 5,
-            condition = "Baik",
-            location = "Ruang Utama"
-        ),
-        Inventory(name = "Speaker Aktif", quantity = 2, condition = "Cukup", location = "Gudang")
-    )
-        private set
-
-    fun addInventory(item: Inventory) {
-        inventoryList.add(item)
-    }
-
-    fun updateInventory(updated: Inventory) {
-        val index = inventoryList.indexOfFirst { it.id == updated.id }
-        if (index != -1) inventoryList[index] = updated
-    }
-
-    fun deleteInventory(id: String) {
-        inventoryList.removeAll { it.id == id }
-    }
-
-    fun getInventoryById(id: String): Inventory? = inventoryList.find { it.id == id }
 }

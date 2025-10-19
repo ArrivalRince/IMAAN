@@ -65,7 +65,7 @@ fun InventoryScreen(
                     .fillMaxSize()
                     .padding(20.dp)
             ) {
-                // 🕌 Header
+                //Header
                 Text(
                     text = "Inventaris Masjid",
                     style = MaterialTheme.typography.headlineSmall.copy(
@@ -81,7 +81,7 @@ fun InventoryScreen(
 
                 Spacer(Modifier.height(20.dp))
 
-                // 🔍 Pencarian
+                //Pencarian
                 OutlinedTextField(
                     value = searchQuery,
                     onValueChange = {
@@ -123,7 +123,7 @@ fun InventoryScreen(
 
                 Spacer(Modifier.height(16.dp))
 
-                // 📋 Daftar
+                // Daftar
                 if (filteredList.isEmpty()) {
                     Box(
                         modifier = Modifier.fillMaxSize(),

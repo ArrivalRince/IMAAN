@@ -66,7 +66,7 @@ fun AddInventoryScreen(
                 verticalArrangement = Arrangement.spacedBy(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // 🔹 Judul
+
                 Text(
                     text = "Masukkan Data Inventaris Baru",
                     fontSize = 20.sp,
@@ -74,35 +74,17 @@ fun AddInventoryScreen(
                     color = BlueDark
                 )
 
-                // 🔹 Card form, dibatasi lebarnya biar tidak melebar ke tepi
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth(0.95f) // biar sedikit ada jarak dari tepi layar
-                        .wrapContentHeight(),
-                    shape = RoundedCornerShape(24.dp),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                    colors = CardDefaults.cardColors(containerColor = CardBackground)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 20.dp, vertical = 24.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
-                    ) {
-                        InventoryForm(
-                            name = name,
-                            quantity = quantity,
-                            condition = condition,
-                            location = location,
-                            onNameChange = { name = it },
-                            onQuantityChange = { quantity = it },
-                            onConditionChange = { condition = it },
-                            onLocationChange = { location = it }
-                        )
-                    }
-                }
+                InventoryForm(
+                    name = name,
+                    quantity = quantity,
+                    condition = condition,
+                    location = location,
+                    onNameChange = { name = it },
+                    onQuantityChange = { quantity = it },
+                    onConditionChange = { condition = it },
+                    onLocationChange = { location = it }
+                )
 
-                // 🔹 Tombol aksi disusun rapi dan lebar sama
                 Row(
                     modifier = Modifier
                         .fillMaxWidth(0.95f),
